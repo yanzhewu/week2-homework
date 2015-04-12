@@ -1,19 +1,21 @@
+<h1> Rock, Paper, Scissors Game </h1>
 <!-- If the player has not choose a weapon -->
 <% if params["choice"] == nil %>
+   <li> Choose your weapon </li>
    <h2><a  href="/rps?choice=Rock">Rock</a></h2>
    <h2><a href="/rps?choice=Paper">Paper</a></h2>
    <h2><a href="/rps?choice=Scissors">Scissors</a></h2>
    <!-- The player chooses a weapon -->
    <% elsif @win.include?@candidate %>
-      <h1> The computer chooses <%= @computer %>, while you choose <%= params["choice"] %> </h1>
+      <li> The computer chooses <%= @computer %>, while you choose <%= params["choice"] %> </li>
       <h1> You win! </h1>
       <h2><a href="/rps">Play again</a></h2>
       <% elsif @lose.include?@candidate %>
-         <h1> The computer chooses <%= @computer %>, while you choose <%= params["choice"] %> </h1>
+         <li> The computer chooses <%= @computer %>, while you choose <%= params["choice"] %> </li>
          <h1> You lose! </h1>
          <h2><a href="/rps">Play again</a></h2>
          <% else %>
-            <h1> The computer chooses <%= @computer %>, while you choose <%= params["choice"] %> </h1>
+            <li> The computer chooses <%= @computer %>, while you choose <%= params["choice"] %> </li>
             <h1> It's a tie! </h1>
             <h2><a href="/rps">Play again</a></h2>
          <% end %>
