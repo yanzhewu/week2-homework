@@ -1,3 +1,19 @@
-<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Rock-paper-scissors_%28rock%29.png/800px-Rock-paper-scissors_%28rock%29.png" <%= image_tag(:size => '10x10')%> 
-<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Rock-paper-scissors_%28scissors%29.png/800px-Rock-paper-scissors_%28scissors%29.png">
-<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Rock-paper-scissors_%28scissors%29.png/800px-Rock-paper-scissors_%28scissors%29.png">
+<!-- If the player has not choose a weapon -->
+<% if params["choice"] == nil %>
+   <h2><a  href="/rps?choice=Rock">Rock</a></h2>
+   <h2><a href="/rps?choice=Paper">Paper</a></h2>
+   <h2><a href="/rps?choice=Scissors">Scissors</a></h2>
+   <!-- The player chooses a weapon -->
+   <% elsif @win.include?@candidate %>
+      <h1> The computer chooses <%= @computer %>, while you choose <%= params["choice"] %> </h1>
+      <h1> You win! </h1>
+      <h2><a href="/rps">Play again</a></h2>
+      <% elsif @lose.include?@candidate %>
+         <h1> The computer chooses <%= @computer %>, while you choose <%= params["choice"] %> </h1>
+         <h1> You lose! </h1>
+         <h2><a href="/rps">Play again</a></h2>
+         <% else %>
+            <h1> The computer chooses <%= @computer %>, while you choose <%= params["choice"] %> </h1>
+            <h1> It's a tie! </h1>
+            <h2><a href="/rps">Play again</a></h2>
+         <% end %>
