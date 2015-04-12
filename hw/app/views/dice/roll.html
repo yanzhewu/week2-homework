@@ -1,0 +1,28 @@
+<h1> Dice Game </h1>
+
+<img src="http://jeffcohenonline.com/dice/<%= @numbers[0] %>.png">
+<img src="http://jeffcohenonline.com/dice/<%= @numbers[1] %>.png">
+
+
+<% if @fail.include?(@numbers[0]+@numbers[1]) %>
+   <li> You lose! </li>
+   <h2><a  href="/dice">Roll to start the game!</a></h2>
+   <% elsif @target.include?(@numbers[0]+@numbers[1]) %>
+      <li> You win! </li>
+      <h2><a  href="/dice">Roll to start the game!</a></h2>
+          <% elsif params["point"].to_i == 0%> 
+             <% params["point"] = @numbers[0] + @numbers[1] %>
+             <li> Your goal is now <%=  params["point"] %> </li>
+             <li> Now try to get <%= params["point"].to_i%> before you get 7! </li>
+             <h2><a  href="/dice/roll?point=<%=@numbers[0]+@numbers[1]%>">Roll again!</a></h2>
+             <% elsif params["point"].to_i == @numbers[0]+@numbers[1]%>
+                <li> You win! </li>
+                <h2><a  href="/dice">Roll to start the game!</a></h2>
+                <% else %>
+                   <li> The target is <%= params["point"] %> </li>
+                   <li> You rolled <%= @numbers[0]+@numbers[1] %>, try again </li>
+                   <h2><a  href="/dice/roll?point=<%= params["point"].to_i %>">Roll again!</a></h2>
+                <% end %>
+
+
+
